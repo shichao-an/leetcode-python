@@ -10,3 +10,4 @@ newdir="$scriptdir/$(echo "$@" | tr 'A-Z ' 'a-z_')"
 
 echo "Creating new directory $newdir ..."
 mkdir "$newdir"
+touch "$newdir/solution.py"

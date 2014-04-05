@@ -23,8 +23,3 @@ class Solution:
                     A[j], A[j - 1] = A[j - 1], A[j]
                     j -= 1
                 blue += 1
-                
-s = Solution()
-a = [1,0,1,2,1,0,0,0]
-s.sortColors(a)
-print a

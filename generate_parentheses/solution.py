@@ -16,26 +16,20 @@ class Solution:
             if not stack:
                 if l > 0:
                     stack.append('(')
-                    l -= 1
                     one += '('
-                    self.gp(stack, l, r, one, res)
-                    l += 1
+                    self.gp(stack, l - 1, r, one, res)
                     stack.pop()
                     one = one[:-1]
             else:
                 if l > 0:
-                    l -= 1
                     one += '('
                     stack.append('(')
-                    self.gp(stack, l, r, one, res)
-                    l += 1
+                    self.gp(stack, l - 1, r, one, res)
                     stack.pop()
                     one = one[:-1]
                 if r > 0:
-                    r -= 1
                     stack.pop()
                     one += ')'
-                    self.gp(stack, l, r, one, res)
-                    r += 1
+                    self.gp(stack, l, r - 1, one, res)
                     stack.append('(')
                     one = one[:-1]

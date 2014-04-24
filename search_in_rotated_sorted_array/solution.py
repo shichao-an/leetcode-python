@@ -12,13 +12,13 @@ class Solution:
             # Left part is sorted
             if A[mid] > A[right]:
                 if target < A[mid] and target >= A[left]:
-                    right -= 1
+                    right = mid - 1
                 else:
-                    left += 1
+                    left = mid + 1
             # Right part is sorted
             else:
                 if target > A[mid] and target <= A[right]:
-                    left += 1
+                    left = mid + 1
                 else:
-                    right -= 1
+                    right = mid - 1
         return -1

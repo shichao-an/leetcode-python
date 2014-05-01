@@ -5,15 +5,18 @@ class Solution:
     # @param n  an integer, length of B
     # @return nothing
     def merge(self, A, m, B, n):
-        if not B:
-            return
-        for i in range(m):
-            if A[i] > B[0]:
-                A[i], B[0] = B[0], A[i]
-            # Bubble the first element to the correct position
-                j = 0
-                while j < n - 1 and B[j] > B[j + 1]:
-                    B[j], B[j + 1] = B[j + 1], B[j]
-                    j += 1
-        for j in range(m, m + n):
-            A[j] = B[j - m]
+        i = m - 1
+        j = n - 1
+        k = m + n - 1
+        while i >= 0 and j >= 0:
+            if A[i] > B[j]:
+                A[k] = A[i]
+                i -= 1
+            else:
+                A[k] = B[j]
+                j -= 1
+            k -= 1
+        while j >= 0:
+            A[k] = B[j]
+            j -= 1
+            k -= 1

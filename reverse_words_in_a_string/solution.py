@@ -45,3 +45,41 @@ class Solution:
             a[i], a[j] = a[j], a[i]
             i += 1
             j -= 1
+
+    def reverseWords2(self, s):
+        cs = list(s)  # Make a C-string like list
+        n = len(cs)
+        # Remove leading and trailing spaces
+        left = 0
+        right = n - 1
+        while left <= right and (cs[left] == ' ' or cs[right] == ' '):
+            if cs[left] == ' ':
+                left += 1
+            if cs[right] == ' ':
+                right -= 1
+        # The string contains only spaces
+        if left > right:
+            return ''
+        # Reverse the whole list
+        self.reverse(cs, left, right)
+        # Remove multiple spaces between two words
+        j = left
+        for i in range(left, right + 1):
+            if cs[i] != ' ' or cs[i] == ' ' and cs[i - 1] != ' ':
+                cs[j] = cs[i]
+                j += 1
+        right = j - 1
+        # Reverse each word
+        start = left
+        q = start
+        while q <= right:
+            while q <= right and cs[q] != ' ':
+                q += 1
+            # q - 1 is the end index of the word
+            self.reverse(cs, start, q - 1)
+            # Start of next word
+            start = q
+            while start <= right and cs[start] == ' ':
+                start += 1
+            q = start
+        return ''.join(cs[left:right + 1])

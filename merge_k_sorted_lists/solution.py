@@ -1,3 +1,4 @@
+import heapq
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):
@@ -43,4 +44,25 @@ class Solution:
             end.next = l1
         if l2 is not None:
             end.next = l2
+        return res
+
+    def mergeKLists2(self, lists):
+        # Create a priority queue
+        h = []
+        res = None
+        end = None
+        for l in lists:
+            if l is not None:
+                heapq.heappush(h, (l.val, l))
+        while h:
+            l = heapq.heappop(h)[1]
+            if res is None:
+                res = l
+                end = l
+            else:
+                end.next = l
+                end = end.next
+            if l.next is not None:
+                l = l.next
+                heapq.heappush(h, (l.val, l))
         return res

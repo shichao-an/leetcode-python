@@ -5,24 +5,29 @@ class Solution:
     # @return an integer
     def ladderLength(self, start, end, dict):
         queue = []
-        depth = 0
-        queue.append((start, depth))
-        n = len(dict)
-        res = n
+        queue.append(start)
+        prev = {}
+        prev[start] = None
+        # Remove words that are same as start
+        for word in set(dict):
+            if start == word:
+                dict.remove(start)
+        dict.add(end)
         while queue:
-            start, depth = queue.pop()
-            depth += 1
-            if self.is_adjacent(start, end):
-                if depth < res:
-                    res = depth
-            for word in set(dict):
-                if self.is_adjacent(start, word):
-                    queue.append((word, depth))
-                    dict.remove(word)
-        if res < n:
-            return res + 1
-        else:
+            cur = queue.pop(0)
+            for word in set(dict):  # Iterate over the copy of dict
+                if self.is_adjacent(cur, word):
+                    dict.remove(word)  # Mark as visited
+                    prev[word] = cur
+                    queue.append(word)
+        if end not in prev:
             return 0
+        res = 1
+        cur = end
+        while prev[cur] != start:
+            cur = prev[cur]
+            res += 1
+        return res + 1
 
     def is_adjacent(self, word1, word2):
         count = 0
@@ -30,8 +35,8 @@ class Solution:
         for i in range(n):
             if word1[i] != word2[i]:
                 count += 1
-        return count <= 1
+        return count == 1
 
 
 s = Solution()
-print s.ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
+print s.ladderLength("hit", "dow", set(["hot", "dot", "dog", "lot", "log"]))

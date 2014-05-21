@@ -20,3 +20,25 @@ class Solution:
             return -1
         else:
             return res
+
+    def canCompleteCircuit2(self, gas, cost):
+        # Brute-force
+        n = len(gas)
+        for i in range(n):
+            if gas[i] - cost[i] < 0:
+                continue
+            carry = gas[i] - cost[i]
+            j = (i + 1) % n
+            flag = True
+            while j != i % n:
+                if carry + gas[j] - cost[j] < 0:
+                    flag = False
+                    break
+                j = (j + 1) % n
+            if flag:
+                return i
+        return -1
+
+
+s = Solution()
+print s.canCompleteCircuit2([2, 4], [3, 4])

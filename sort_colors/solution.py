@@ -2,24 +2,21 @@ class Solution:
     # @param A a list of integers
     # @return nothing, sort in place
     def sortColors(self, A):
-        red = 0  # 0
-        white = 0  # 1
-        blue = 0  # 2
         n = len(A)
-        for i in range(n):
-            j = i
+        r = 0  # Last index of red
+        b = n - 1  # First index of white
+        i = 0
+        while i <= b:
             if A[i] == 0:
-                while j - 1 >= red:
-                    A[j], A[j - 1] = A[j - 1], A[j]
-                    j -= 1
-                red += 1
-            elif A[i] == 1:
-                while j - 1 >= white + red:
-                    A[j], A[j - 1] = A[j - 1], A[j]
-                    j -= 1
-                white += 1
+                A[i], A[r] = A[r], A[i]
+                r += 1
+                # Increment i because swapped item must be 1 or 0
+                i += 1
             elif A[i] == 2:
-                while j - 1 >= blue + white + red:
-                    A[j], A[j - 1] = A[j - 1], A[j]
-                    j -= 1
-                blue += 1
+                A[i], A[b] = A[b], A[i]
+                b -= 1
+                # Do not increment i, since swapped item may be 0, 1, or 2
+                continue
+            # A[i] == 1
+            else:
+                i += 1

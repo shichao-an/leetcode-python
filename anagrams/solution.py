@@ -8,14 +8,12 @@ class Solution:
             key = self.make_key(s)
             # First occurence of an anagram
             if key not in d:
-                d[key] = i
+                d[key] = [s]
             else:
-                if d[key] >= 0:
-                    # Append the first string of this anagram
-                    first_index = d[key]
-                    res.append(strs[first_index])
-                    d[key] = -1
-                res.append(s)
+                d[key].append(s)
+        for key in d:
+            if len(d[key]) > 1:
+                res += d[key]
         return res
 
     def make_key(self, s):
@@ -36,18 +34,3 @@ class Solution:
                 res.append(c)
                 res.append(str(d[c]))
         return ''.join(res)
-
-
-s = Solution()
-a = [
-    "cab",
-    "pug",
-    "pei",
-    "nay",
-    "ron",
-    "rae",
-    "ems",
-    "ida",
-    "mes"
-]
-print s.anagrams(a)

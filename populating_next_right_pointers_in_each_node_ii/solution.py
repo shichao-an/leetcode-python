@@ -10,25 +10,26 @@ class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
-        head = None  # Head node of a level
-        prev = None  # Last processed node of a level
+        head = None  # Head node of the next level
+        prev = None
         while root is not None:
+            # Build the next level of root
             while root is not None:
                 if root.left is not None:
                     if prev is None:
                         head = root.left
+                        prev = head
                     else:
                         prev.next = root.left
-                    prev = root.left
+                        prev = prev.next
                 if root.right is not None:
                     if prev is None:
                         head = root.right
+                        prev = head
                     else:
                         prev.next = root.right
-                    prev = root.right
-                # Go to the next (right) node
+                        prev = prev.next
                 root = root.next
-            # Go to the next level
             root = head
             head = None
             prev = None

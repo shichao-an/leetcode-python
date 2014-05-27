@@ -17,18 +17,22 @@ class Solution:
     def sortedListToBST(self, head):
         if head is None:
             return None
-        pp = p = q = head
-        while q is not None and q.next is not None:
-            pp = p  # pp is the previous node to p
-            p = p.next
-            q = q.next.next
-        root = TreeNode(p.val)
-        pp.next = None  # Split the linked list
-        if pp == p:
-            left = None
         else:
+            # Get the middle node
+            slow = head
+            fast = head
+            prev = None  # Previous node to slow (mid)
+            while fast.next is not None and fast.next.next is not None:
+                prev = slow
+                fast = fast.next.next
+                slow = slow.next
+            if head == slow:
+                head = None
+            if prev is not None:
+                prev.next = None
+            root = TreeNode(slow.val)
             left = self.sortedListToBST(head)
-        right = self.sortedListToBST(p.next)
-        root.left = left
-        root.right = right
-        return root
+            right = self.sortedListToBST(slow.next)
+            root.left = left
+            root.right = right
+            return root

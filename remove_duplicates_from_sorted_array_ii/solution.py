@@ -4,19 +4,16 @@ class Solution:
     def removeDuplicates(self, A):
         if not A:
             return 0
-        if len(A) == 1:
-            return 1
-        j = 0  # Position of last processed non-duplicate
+        j = 0
+        counter = 0  # How many times repeated (1 for twice)
         n = len(A)
-        twice = False  # Whether last processed non-duplicate appreared twice
         for i in range(1, n):
-            # Duplicate is found
-            if A[i] == A[j] and not twice:
-                twice = True
+            if A[i] == A[j] and counter <= 0:
                 j += 1
                 A[j] = A[i]
+                counter += 1
             elif A[i] != A[j]:
                 j += 1
                 A[j] = A[i]
-                twice = False
+                counter = 0
         return j + 1

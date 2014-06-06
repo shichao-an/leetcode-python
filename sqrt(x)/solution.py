@@ -6,13 +6,11 @@ class Solution:
         right = x
         while left <= right:
             mid = left + (right - left) / 2
-            if mid * mid == x:
+            square = mid * mid
+            if square == x:
                 return mid
-            elif mid * mid < x:
-                if (mid + 1) * (mid + 1) > x:
-                    return mid
+            elif square < x:
                 left = mid + 1
             else:
-                if (mid - 1) * (mid - 1) < x:
-                    return mid - 1
                 right = mid - 1
+        return (left + right) / 2

@@ -4,34 +4,30 @@ class Solution:
     def setZeroes(self, matrix):
         n = len(matrix)
         m = len(matrix[0])
-        self.m = m
-        self.n = n
-        first_row_zero = False
-        first_column_zero = False
+        column_zero = False
+        row_zero = False
         for i in range(n):
             for j in range(m):
                 if matrix[i][j] == 0:
+                    # Check whether the first row and column contain
+                    # zeroes before recording
                     if i == 0:
-                        first_row_zero = True
+                        row_zero = True
                     if j == 0:
-                        first_column_zero = True
+                        column_zero = True
+                    # Record zeroes using the first row and column
                     matrix[i][0] = 0
                     matrix[0][j] = 0
-        for i in range(1, n):
-            if matrix[i][0] == 0:
-                self.set_row_zero(matrix, i)
-        for j in range(1, m):
-            if matrix[0][j] == 0:
-                self.set_column_zero(matrix, j)
-        if first_row_zero:
-            self.set_row_zero(matrix, 0)
-        if first_column_zero:
-            self.set_column_zero(matrix, 0)
-
-    def set_column_zero(self, matrix, x):
-        for i in range(self.n):
-            matrix[i][x] = 0
-
-    def set_row_zero(self, matrix, y):
-        for j in range(self.m):
-            matrix[y][j] = 0
+        # Set zeroes except for the first row and column
+        for i in range(n):
+            for j in range(m):
+                if i > 0 and j > 0:
+                    if matrix[0][j] == 0 or matrix[i][0] == 0:
+                        matrix[i][j] = 0
+        # Set the first row and column
+        if row_zero:
+            for j in range(m):
+                matrix[0][j] = 0
+        if column_zero:
+            for i in range(n):
+                matrix[i][0] = 0

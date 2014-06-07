@@ -16,12 +16,12 @@ class Solution:
                     if target == row[mid]:
                         return True
                     elif target < row[mid]:
-                        right -= 1
+                        right = mid - 1
                     else:
-                        left += 1
+                        left = mid + 1
                 return False
             elif target < row[0]:
-                row_right -= 1
-            elif target > row[-1]:
-                row_left += 1
+                row_right = row_mid - 1
+            else:
+                row_left = row_mid + 1
         return False

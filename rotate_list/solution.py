@@ -19,11 +19,11 @@ class Solution:
         k = k % n
         if k == 0:
             return h
-        prev = h  # End of h (previous node of head)
         res = h  # Head of result
-        i = 1
+        prev = h  # Previous node of result
+        i = 0
         while res is not None:
-            if i == n + 1 - k:
+            if i == n - k:
                 break
             prev = res
             res = res.next

@@ -4,8 +4,7 @@ class Solution:
     def minPathSum(self, grid):
         n = len(grid)
         m = len(grid[0])
-        t = [[1] * m] * n
-        i = j = 0
+        t = [[0 for i in range(m)] for j in range(n)]
         for i in range(n):
             for j in range(m):
                 if i == 0 and j == 0:

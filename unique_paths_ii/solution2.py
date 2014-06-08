@@ -9,7 +9,8 @@ class Solution:
 
     def unique_paths(self, grid, x, y, t):
         if x == 0 and y == 0:
-            return 1 if grid[y][x] == 0 else 0
+            t[y][x] = 1 if grid[y][x] == 0 else 0
+            return t[y][x]
         elif grid[y][x] == 1:
             t[y][x] = 0
             return t[y][x]

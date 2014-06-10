@@ -13,7 +13,6 @@ class Solution:
                 t[i][j] = True
                 start = i
                 max_len = 2
-        l = 3  # Length
         for l in range(3, n + 1):
             for i in range(n - l + 1):
                 j = i + l - 1
@@ -24,6 +23,6 @@ class Solution:
         return s[start:start + max_len]
 
 
-a = 'faabaakcbc'
+a = 'akaa2baakcbbc'
 s = Solution()
 print s.longestPalindrome(a)

@@ -13,6 +13,7 @@ class Solution:
         cur = n - 1  # Current index to reach (in a loop)
         i = cur - 1
         reached = False  # Whether `cur` can be reached by previous elements
+        # Worst case: O(n^2)
         while i >= 0:
             while i >= 0:
                 if t[i] >= cur:

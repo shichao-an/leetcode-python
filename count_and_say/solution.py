@@ -18,3 +18,10 @@ class Solution:
             tn.append(str(prev))
             ln = tn
         return ''.join(ln)
+
+s = Solution()
+print s.countAndSay(1)
+print s.countAndSay(2)
+print s.countAndSay(3)
+print s.countAndSay(4)
+print s.countAndSay(5)

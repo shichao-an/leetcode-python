@@ -3,24 +3,42 @@ class Solution:
     # @param target, an integer to be searched
     # @return a list of length 2, [index1, index2]
     def searchRange(self, A, target):
-        res = [-1, -1]
         n = len(A)
-        l = 0
-        r = n - 1
-        while l <= r:
-            mid = l + (r - l) // 2
-            if target == A[mid]:
-                res = [mid, mid]
-                p = q = mid
-                while p >= 0 and A[p] == target:
-                    res[0] = p
-                    p -= 1
-                while q <= n - 1 and A[q] == target:
-                    res[1] = q
-                    q += 1
+        if n == 1:
+            if A[0] == target:
+                return [0, 0]
+            else:
+                return [-1, -1]
+        left = 0
+        right = n - 1
+        lower = -1
+        upper = -1
+        # Find lower bound
+        while left <= right:
+            mid = (left + right) / 2
+            if mid < n - 1 and A[mid + 1] == target and A[mid] < target:
+                lower = mid + 1
+                break
+            elif A[mid] == target and mid == 0:
+                lower = mid
+                break
+            elif target <= A[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        # Find upper bound
+        left = 0
+        right = n - 1
+        while left <= right:
+            mid = (left + right) / 2
+            if mid < n - 1 and A[mid + 1] > target and A[mid] == target:
+                upper = mid
+                break
+            elif A[mid] == target and mid == n - 1:
+                upper = mid
                 break
             elif target < A[mid]:
-                r -= 1
+                right = mid - 1
             else:
-                l += 1
-        return res
+                left = mid + 1
+        return [lower, upper]

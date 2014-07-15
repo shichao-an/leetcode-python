@@ -15,4 +15,4 @@ class Solution:
             head.next = t.next
             t.next = head
             head.next = self.swapPairs(head.next)
-            return
+            return t

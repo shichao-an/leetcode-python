@@ -12,7 +12,6 @@ class Solution:
             return head
         else:
             t = head.next
-            head.next = t.next
+            head.next = self.swapPairs(t.next)
             t.next = head
-            head.next = self.swapPairs(head.next)
             return t

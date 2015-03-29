@@ -1,13 +1,20 @@
 #!/bin/bash
 
-usage="./makedir.sh title [...]"
-[ "$#" -eq 0 ] && { echo "$usage"; exit 1; }
+USAGE="./makedir.sh title [...]"
 
-scriptdir=$(dirname "$0")
-newdir="$scriptdir/$(echo "$@" | tr 'A-Z ' 'a-z_' | tr -d "'")"
+[ "$#" -eq 0 ] && {
+    echo "$USAGE"
+    exit 1
+}
 
-[ -d "$newdir" ] && { echo "This directory already exists"; exit 1; } 
+SCRIPTDIR=$(dirname "$0")
+NEWDIR="$SCRIPTDIR/$(echo "$@" | tr 'A-Z ' 'a-z_' | tr -d "'")"
 
-echo "Creating new directory $newdir ..."
-mkdir "$newdir"
-touch "$newdir/solution.py"
+[ -d "$NEWDIR" ] && {
+    echo "This directory already exists"
+    exit 1
+}
+
+echo "Creating new directory $NEWDIR ..."
+mkdir "$NEWDIR"
+touch "$NEWDIR/solution.py"

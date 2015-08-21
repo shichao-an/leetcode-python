@@ -15,3 +15,11 @@ class Solution:
         else:
             t[n] = self.climb(n - 1, t) + self.climb(n - 2, t)
             return t[n]
+
+
+s = Solution()
+print(s.climbStairs(0))
+print(s.climbStairs(1))
+print(s.climbStairs(2))
+print(s.climbStairs(3))
+print(s.climbStairs(4))

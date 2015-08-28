@@ -1,3 +1,7 @@
+"""
+Given a singly linked list where elements are sorted in ascending order,
+convert it to a height balanced BST.
+"""
 # Definition for a  binary tree node
 # class TreeNode:
 #     def __init__(self, x):
@@ -26,7 +30,7 @@ class Solution:
                 prev = slow
                 fast = fast.next.next
                 slow = slow.next
-            if head == slow:
+            if head is slow:
                 head = None
             if prev is not None:
                 prev.next = None

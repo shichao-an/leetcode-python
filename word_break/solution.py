@@ -16,20 +16,15 @@ class Solution(object):
         :type wordDict: Set[str]
         :rtype: bool
         """
-        t = set()
-        return self.word_break_aux(s, wordDict, t)
-
-    def word_break_aux(self, s, wordDict, t):
-        if not s:
-            return True
-        if s in t:
-            return True
-        else:
-            for i, c in enumerate(s):
-                word = s[:i + 1]
-                rest = s[i + 1:]
-                if word in wordDict and self.wordBreak(rest, wordDict):
-                    t.add(s)
-                    print(t)
-                    return True
-            return False
+        n = len(s)
+        # t[i] indicates s[:i + 1] is such a string
+        t = [False for i in range(n)]
+        for i in range(n):
+            if s[:i + 1] in wordDict:
+                t[i] = True
+            else:
+                for j in range(i + 1):
+                    if t[j] is True and s[j + 1:i + 1] in wordDict:
+                        t[i] = True
+                        break
+        return t[-1]

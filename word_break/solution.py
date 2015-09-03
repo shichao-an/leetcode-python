@@ -23,7 +23,7 @@ class Solution(object):
             if s[:i + 1] in wordDict:
                 t[i] = True
             else:
-                for j in range(i + 1):
+                for j in range(i):
                     if t[j] is True and s[j + 1:i + 1] in wordDict:
                         t[i] = True
                         break

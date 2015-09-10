@@ -1,24 +1,42 @@
-class LRUCache:
+"""
+Design and implement a data structure for Least Recently Used (LRU) cache. It
+should support the following operations: get and set.
 
-    # @param capacity, an integer
+get(key) - Get the value (will always be positive) of the key if the key
+exists in the cache, otherwise return -1.
+
+set(key, value) - Set or insert the value if the key is not already present.
+When the cache reached its capacity, it should invalidate the least recently
+used item before inserting a new item.
+
+"""
+
+
+class LRUCache(object):
     def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
         self.capacity = capacity
         self.times = List()
         self.cache = {}
-        self.timestamp = 0
 
-    # @return an integer
     def get(self, key):
+        """
+        :rtype: int
+        """
         if key in self.cache:
             node = self.cache[key]
             self.times.touch(node)
             return node.value
         return -1
 
-    # @param key, an integer
-    # @param value, an integer
-    # @return nothing
     def set(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: nothing
+        """
         if key in self.cache:
             node = self.cache[key]
             node.value = value
@@ -75,11 +93,17 @@ class List(object):
             self.head = node
 
     def remove(self, node):
-        """Remove node"""
+        """Remove a node"""
         prev_node = node.prev
+        next_node = node.next
+        # If node is not the head node
         if prev_node is not None:
-            prev_node.next = None
-            self.tail = prev_node
+            prev_node.next = next_node
+            # If node is not the tail node
+            if next_node is not None:
+                next_node.prev = prev_node
+            else:
+                self.tail = prev_node
         else:
             self.head = None
             self.tail = None

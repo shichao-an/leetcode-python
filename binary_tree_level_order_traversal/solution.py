@@ -16,17 +16,21 @@ return its level order traversal as:
   [15,7]
 ]
 """
-# Definition for a  binary tree node
-# class TreeNode:
+
+# Definition for a binary tree node.
+# class TreeNode(object):
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-class Solution:
-    # @param root, a tree node
-    # @return a list of lists of integers
+class Solution(object):
     def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+
         res = []
         if root is None:
             return res

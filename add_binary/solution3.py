@@ -20,7 +20,7 @@ class Solution(object):
         n = len(b)
         i = 0
         c = 0
-        res = ['0' for k in range(max(m, n) + 1)]
+        res = ['0' for _ in range(max(m, n) + 1)]
         while i < m or i < n or c > 0:
             tmp = c
             if i < m:

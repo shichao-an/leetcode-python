@@ -1,7 +1,21 @@
-class Solution:
-    # @param board, a 9x9 2D array
-    # @return a boolean
+"""
+Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules
+(http://sudoku.com.au/TheRules.aspx).
+
+The Sudoku board could be partially filled, where empty cells are filled with
+the character '.'.
+
+A valid Sudoku board (partially filled) is not necessarily solvable. Only the
+filled cells need to be validated.
+
+"""
+
+class Solution(object):
     def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
         # Check rows
         for i in range(9):
             d = {}

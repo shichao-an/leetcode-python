@@ -6,15 +6,17 @@ The order of elements can be changed. It doesn't matter what you leave beyond
 the new length.
 """
 
-class Solution:
-    # @param    A       a list of integers
-    # @param    elem    an integer, value need to be removed
-    # @return an integer
-    def removeElement(self, A, elem):
-        n = len(A)
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        n = len(nums)
         j = 0
         for i in range(n):
-            if A[i] != elem:
-                A[j] = A[i]
+            if nums[i] != val:
+                nums[j] = nums[i]
                 j += 1
         return j

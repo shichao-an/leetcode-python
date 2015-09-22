@@ -28,7 +28,11 @@ class Solution(object):
             j -= 1
 
 
-a = [1, 2, 3, 4, 5, 6, 7]
+a1 = [1, 2, 3, 4, 5, 6, 7]
 s = Solution()
-s.rotate(a, 3)
-print(a)
+s.rotate(a1, 3)
+print(a1)
+
+a2 = [1]
+s.rotate(a2, 2)
+print(a2)

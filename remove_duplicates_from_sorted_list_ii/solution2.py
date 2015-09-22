@@ -20,21 +20,26 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        d = {}
+        if head is None:
+            return None
         current = head
-        while current is not None:
-            if current.val not in d:
-                d[current.val] = 1
-            else:
-                d[current.val] += 1
-            current = current.next
-        current = head
+        last = None
+        count = 0  # Repeated count of `last`
         dummy = ListNode(0)
         dummy_end = dummy
         while current is not None:
-            if d[current.val] == 1:
-                dummy_end.next = current
-                dummy_end = current
+            if last is not None:
+                if current.val == last.val:
+                    count += 1
+                else:
+                    if count == 0:
+                        dummy_end.next = last
+                        dummy_end = last
+                    count = 0
+            last = current
             current = current.next
+        if count == 0:
+            dummy_end.next = last
+            dummy_end = last
         dummy_end.next = None
         return dummy.next

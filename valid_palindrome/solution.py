@@ -14,10 +14,12 @@ For the purpose of this problem, we define empty string as valid palindrome.
 """
 
 
-class Solution:
-    # @param s, a string
-    # @return a boolean
+class Solution(object):
     def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
         if not s:
             return True
         left = 0

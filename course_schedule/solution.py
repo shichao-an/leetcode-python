@@ -25,6 +25,8 @@ class Solution(object):
         :type numCourses: int
         :type prerequisites: List[List[int]]
         :rtype: bool
+
+        Topological sort
         """
         # An implementation of
         # https://en.wikipedia.org/wiki/Topological_sorting#Algorithms

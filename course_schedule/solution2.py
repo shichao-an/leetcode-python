@@ -28,6 +28,8 @@ class Solution(object):
         :type numCourses: int
         :type prerequisites: List[List[int]]
         :rtype: bool
+
+        Detect if course prerequisites graph has a cycle.
         """
 
         self.unvisited = set(range(numCourses))

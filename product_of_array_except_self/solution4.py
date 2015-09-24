@@ -23,6 +23,8 @@ class Solution(object):
         res = [1 for i in range(n)]
         # Scan from left to right
         for i in range(1, n):
+            # i is from 1 to n - 1
+            # res[i] is the product accumulated to the left
             res[i] = res[i - 1] * nums[i - 1]
 
         # right_product is the product accumulated to the right

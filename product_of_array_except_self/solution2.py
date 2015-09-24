@@ -27,8 +27,7 @@ class Solution(object):
         for i in range(1, n):
             for j in range(i):
                 res[j] *= nums[i]
-            if i > 0:
-                product *= nums[i - 1]
+            product *= nums[i - 1]
             res[i] = product
         return res
 

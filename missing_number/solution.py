@@ -9,20 +9,10 @@ Note:
 Your algorithm should run in linear runtime complexity. Could you implement it
 using only constant extra space complexity?
 """
-
-class Solution(object):
-    def missingNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        n = len(nums)
-        s = n * (n + 1) / 2
-        res = 0
-        for i in nums:
-            res += i
-        return s - res
-
-s = Solution()
-a1 = [0, 1, 3]
-print(s.missingNumber(a1))
+def missing(a,n):
+    for i in range(1,n):
+        if i!=a[i-1]:
+            return i
+l=[1,2,3,4,6,7,8,9]
+a=missing(l,len(l)+1)
+print("the missing no. is",a)

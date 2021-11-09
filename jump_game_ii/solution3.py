@@ -23,7 +23,7 @@ class Solution(object):
         Time Limit Exceeded
         """
         n = len(nums)
-        # t[i] means mininum number of jumps to nums[i]
+        # t[i] means minimum number of jumps to nums[i]
         t = [-1 for i in range(n)]
         t[0] = 0
         if n == 1:

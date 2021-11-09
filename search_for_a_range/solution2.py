@@ -23,7 +23,7 @@ class Solution(object):
         right = n - 1
         left_res = -1
         right_res = -1
-        # Search for left bound (first occurence of target)
+        # Search for left bound (first occurrence of target)
         while left + 1 < right:
             mid = left + (right - left) / 2
             if target > nums[mid]:
@@ -37,7 +37,7 @@ class Solution(object):
         else:
             return [-1, -1]
 
-        # Search for right bound (last occurence of target)
+        # Search for right bound (last occurrence of target)
         left = 0
         right = n - 1
         while left + 1 < right:

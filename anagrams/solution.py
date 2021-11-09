@@ -6,7 +6,7 @@ class Solution:
         res = []
         for i, s in enumerate(strs):
             key = self.make_key(s)
-            # First occurence of an anagram
+            # First occurrence of an anagram
             if key not in d:
                 d[key] = [s]
             else:
@@ -26,7 +26,7 @@ class Solution:
             else:
                 d[c] = 1
         # Iterate form 'a' to 'z'
-        # This make sure the character occurences is ordered
+        # This make sure the character occurrences is ordered
         # and thus unique
         for i in range(ord('a'), ord('z') + 1):
             c = chr(i)
